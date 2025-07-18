@@ -26,6 +26,7 @@ interface CVHeaderProps {
 const CVHeader: React.FC<CVHeaderProps> = ({ selectedProfile, onProfileChange, cvData }) => {
   const [isClient, setIsClient] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
+  const [showDownloadPdf, setShowDownloadPdf] = useState(false);
 
   // Use the same theme logic as CVDisplay
   const theme = cvData.profile.includes('Frontend') ? THEME_COLORS.frontend : THEME_COLORS.sdet;
@@ -39,6 +40,7 @@ const CVHeader: React.FC<CVHeaderProps> = ({ selectedProfile, onProfileChange, c
 
   const handlePrint = () => {
     window.print();
+    setShowDownloadPdf(true);
   };
 
   const handleProfileChange = (event: SelectChangeEvent) => {
@@ -193,7 +195,7 @@ const CVHeader: React.FC<CVHeaderProps> = ({ selectedProfile, onProfileChange, c
             Print Resume
           </Button>
 
-          {isClient && (
+          {isClient && showDownloadPdf && (
             <Button 
               variant="contained" 
               onClick={handleDownloadPdf}
