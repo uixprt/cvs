@@ -1,0 +1,68 @@
+{
+  "profile": "Frontend Engineer",
+  "personalInfo": {
+    "name": "Asher Indursky",
+    "location": "Israel",
+    "contact": {
+      "phone": "972-54-843-1684",
+      "email": "inasher3d@gmail.com",
+      "linkedin": "https://www.linkedin.com/in/asherindursky"
+    }
+  },
+  "headline": "Frontend Engineer | UI Infrastructure & Design Systems",
+  "summary": "Experienced Frontend Engineer with a decade of hands-on experience in building maintainable UI components, scalable CSS architectures, and robust automation frameworks. My passion lies in creating the foundational tools and standards that enable development teams to build better products, faster. I am proficient in leveraging modern tools to solve complex problems and deliver high-quality results.",
+  "skills": {
+    "frontend": ["React", "Angular", "TypeScript", "RxJS", "JavaScript", "HTML5", "CSS (Sass, PostCSS)", "Component Libraries", "Design Systems"],
+    "testing_automation": ["Playwright", "Jest", "E2E & Integration Testing"],
+    "backend_tools": ["Node.js (for tooling & scripting)", "Prisma", "GraphQL (client-side)", "Monorepo (Nx, Lerna)", "CI/CD", "Docker"]
+  },
+  "experience": [
+    {
+      "company": "inabit",
+      "location": "Israel",
+      "roles": [
+        {
+          "title": "Automation JavaScript Developer",
+          "duration": "July 2022 – Present",
+          "responsibilities": [
+            "Designed and developed a complete E2E testing framework to validate a complex Nest.js + React application, ensuring a high-quality user experience.",
+            "Built a Node.js CLI tool to streamline the testing workflow by integrating with the TestRail API.",
+            "Collaborated closely with the R&D Agile team, providing key insights on the testability and reliability of new UI features."
+          ]
+        }
+      ]
+    },
+    {
+      "company": "PROFITIT",
+      "location": "Israel",
+      "totalTenure": "Oct 2016 - Dec 2022 (6 years 3 months)",
+      "roles": [
+        {
+          "title": "Frontend Developer",
+          "duration": "Jan 2019 – Dec 2022",
+          "responsibilities": [
+            "Developed and refactored core features for a large-scale CRM application within an Angular/React monorepo.",
+            "Implemented complex, stateful UI components using TypeScript and RxJS.",
+            "Wrote extensive E2E and integration tests to ensure frontend code quality and prevent regressions."
+          ]
+        },
+        {
+          "title": "CMS Lead",
+          "duration": "Aug 2017 – July 2019",
+          "responsibilities": [
+            "Led the CMS development team, mentoring two developers and defining the team's development standards and processes.",
+            "Developed a modular page-builder-like framework for enterprise clients on a WordPress/Laravel stack.",
+            "Established a Docker-based local development environment and wrote supporting deployment scripts to streamline the team's specific CMS development lifecycle."
+          ]
+        },
+        {
+          "title": "CSS Developer",
+          "duration": "Oct 2016 – May 2018",
+          "responsibilities": [
+            "Owned the company's core CSS architecture, building a reusable and themeable UI component library from scratch that was adopted across all company products."
+          ]
+        }
+      ]
+    }
+  ]
+}

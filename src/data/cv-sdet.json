@@ -1,0 +1,68 @@
+{
+  "profile": "Senior SDET / Full-Stack",
+  "personalInfo": {
+    "name": "Asher Indursky",
+    "location": "Israel",
+    "contact": {
+      "phone": "972-54-843-1684",
+      "email": "inasher3d@gmail.com",
+      "linkedin": "https://www.linkedin.com/in/asherindursky"
+    }
+  },
+  "headline": "Senior Software Engineer | Full-Stack (React & Node.js) | Testing & Quality Infrastructure",
+  "summary": "Seasoned Software Engineer with a decade of experience specializing in building robust, scalable infrastructures for complex web applications. My recent work in the Web3/Fintech space involved architecting critical systems from the ground up, providing me with a unique end-to-end perspective—from database schemas and API contracts to the intricacies of the client-side experience. I thrive on solving complex engineering problems and leveraging modern tools to deliver high-quality results with exceptional velocity.",
+  "skills": {
+    "testing_automation": ["Test Architecture", "Playwright", "Jest", "E2E & API Testing", "CI/CD", "Quality Engineering"],
+    "backend_infrastructure": ["Node.js", "Nest.js (testing context)", "Prisma", "GraphQL", "Docker", "System Integration"],
+    "frontend": ["React", "Angular", "TypeScript", "RxJS", "Monorepo (Nx, Lerna)"]
+  },
+  "experience": [
+    {
+      "company": "inabit",
+      "location": "Israel",
+      "roles": [
+        {
+          "title": "Software Engineer, Automation & Infrastructure",
+          "duration": "July 2022 – Present",
+          "responsibilities": [
+            "Architected and built a complete E2E and API testing framework from the ground up, using Playwright, Prisma, and GraphQL to validate a complex Nest.js + React web application.",
+            "Engineered a custom Node.js CLI tool to automate integration with TestRail, dramatically improving the efficiency of managing and executing test suites.",
+            "Acted as a key engineering partner within the R&D Agile scrum team, providing critical feedback on new features to ensure system testability, performance, and reliability."
+          ]
+        }
+      ]
+    },
+    {
+      "company": "PROFITIT",
+      "location": "Israel",
+      "totalTenure": "Oct 2016 - Dec 2022 (6 years 3 months)",
+      "roles": [
+        {
+          "title": "Frontend Developer",
+          "duration": "Jan 2019 – Dec 2022",
+          "responsibilities": [
+            "Drove the development and refactoring of critical features for the company's core CRM application within a large-scale Angular/React monorepo.",
+            "Owned the frontend quality domain by writing and maintaining a comprehensive suite of E2E, integration, and unit tests (Jest, Playwright).",
+            "Implemented complex UI components using TypeScript and advanced RxJS patterns."
+          ]
+        },
+        {
+          "title": "CMS Lead",
+          "duration": "Aug 2017 – July 2019",
+          "responsibilities": [
+            "Promoted to lead the CMS team, where I mentored two developers and defined the team's entire development workflow and coding standards.",
+            "Architected a modular, page-builder-like framework on a modern WordPress/Laravel stack.",
+            "Established a Docker-based local development environment and wrote supporting deployment scripts to streamline the team's specific CMS development lifecycle."
+          ]
+        },
+        {
+          "title": "CSS Developer",
+          "duration": "Oct 2016 – May 2018",
+          "responsibilities": [
+            "Built the company's foundational, reusable UI component library and CSS architecture."
+          ]
+        }
+      ]
+    }
+  ]
+}
