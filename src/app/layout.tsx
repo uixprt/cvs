@@ -25,7 +25,7 @@ export default function RootLayout({
             @media print {
               @page {
                 size: A4;
-                margin:0.35in 0.25in 0.25in;
+                margin:0.1in 0.15in 0.15in;
               }
               
               .no-print {
