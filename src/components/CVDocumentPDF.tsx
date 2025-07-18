@@ -25,17 +25,17 @@ const CVDocumentPDF: React.FC<CVDocumentPDFProps> = ({ cvData }) => {
   
   // Determine main color based on profile
   const isSdet = cvData.profile.toLowerCase().includes('sdet');
-  const mainColor = isSdet ? THEME_COLORS.sdet.primary : '#2196f3';
+  const mainColor = isSdet ? THEME_COLORS.sdet.primary : '#3399cc';
   
   // Create styles that match the print layout exactly
   const styles = StyleSheet.create({
     page: {
       fontFamily: 'Rubik',
       backgroundColor: '#ffffff',
-      padding: '14pt 10pt 10pt 10pt', // עוד הקטנה
+      padding: '16pt 12pt 0pt 12pt', // top 16pt, sides 12pt, bottom 0pt
       color: '#333333',
-      fontSize: 9, // עוד הקטנה
-      lineHeight: 1.2, // עוד הקטנה
+      fontSize: 10,
+      lineHeight: 1.45,
       maxHeight: '842pt',
       minHeight: '842pt',
     },
@@ -44,33 +44,33 @@ const CVDocumentPDF: React.FC<CVDocumentPDFProps> = ({ cvData }) => {
     profileHeader: {
       backgroundColor: mainColor,
       borderRadius: 8,
-      padding: 8,
+      padding: 6, // היה 8
       textAlign: 'center',
       marginBottom: 4,
       color: '#ffffff',
     },
     
     profileName: {
-      fontSize: 18,
+      fontSize: 18, // היה 19
       fontWeight: 700,
-      marginBottom: 16,
+      marginBottom: 17, // היה 16
       color: '#ffffff',
     },
     
     profileHeadline: {
-      fontSize: 10,
+      fontSize: 10, // היה 11
       fontWeight: 500,
       backgroundColor: 'rgba(255,255,255,0.2)',
-      paddingVertical: 3,
-      paddingHorizontal: 8,
+      paddingVertical: 4,
+      paddingHorizontal: 9,
       borderRadius: 4,
-      marginBottom: 3,
+      marginBottom: 4,
       color: '#ffffff',
       alignSelf: 'center',
-      display: 'inline-block',
       textAlign: 'center',
-      minWidth: 0,
       maxWidth: '80%',
+      marginLeft: 'auto',
+      marginRight: 'auto',
     },
     
     // Contact Info Container
@@ -109,10 +109,10 @@ const CVDocumentPDF: React.FC<CVDocumentPDFProps> = ({ cvData }) => {
     
     // Section Titles
     sectionTitle: {
-      fontSize: 11,
+      fontSize: 12, // היה 11
       fontWeight: 700,
       color: mainColor,
-      marginBottom: 6,
+      marginBottom: 7, // היה 6
       textTransform: 'none',
       letterSpacing: 0.2,
       textDecoration: 'none',
@@ -121,10 +121,10 @@ const CVDocumentPDF: React.FC<CVDocumentPDFProps> = ({ cvData }) => {
     
     // Professional Summary
     summaryText: {
-      fontSize: 9,
-      lineHeight: 1.35, // היה 1.2
+      fontSize: 10, // היה 9
+      lineHeight: 1.45, // היה 1.35
       color: '#333333',
-      marginBottom: 8, // היה 6
+      marginBottom: 9, // היה 8
       textAlign: 'justify',
     },
     
@@ -141,10 +141,10 @@ const CVDocumentPDF: React.FC<CVDocumentPDFProps> = ({ cvData }) => {
     },
     
     skillCategory: {
-      fontSize: 9,
-      lineHeight: 1.25, // היה 1.1
+      fontSize: 10, // היה 9
+      lineHeight: 1.35, // היה 1.25
       color: '#333333',
-      marginBottom: 3, // היה 2
+      marginBottom: 4, // היה 3
     },
     
     skillCategoryName: {
@@ -225,8 +225,8 @@ const CVDocumentPDF: React.FC<CVDocumentPDFProps> = ({ cvData }) => {
     },
     
     responsibilityText: {
-      fontSize: 8,
-      lineHeight: 1.25, // היה 1.1
+      fontSize: 9, // היה 8
+      lineHeight: 1.35, // היה 1.25
       color: '#333333',
       flex: 1,
     },
@@ -254,7 +254,7 @@ const CVDocumentPDF: React.FC<CVDocumentPDFProps> = ({ cvData }) => {
             {cvData.personalInfo.name}
           </Text>
           
-          <Text style={styles.profileHeadline}>
+          <Text style={styles.profileHeadline} wrap={false}>
             {cvData.headline}
           </Text>
           
@@ -301,41 +301,51 @@ const CVDocumentPDF: React.FC<CVDocumentPDFProps> = ({ cvData }) => {
             Professional Experience
           </Text>
           <View style={styles.experienceContainer}>
-            {cvData.experience.map((company: Experience, companyIndex: number) => (
-              <View key={companyIndex} style={styles.companyCard}>
-                <View style={styles.companyHeader}>
-                  <Text style={styles.companyName}>
-                    {company.company}
-                  </Text>
-                  <Text style={styles.companyLocation}>
-                    {company.location}
-                    {company.totalTenure && (
-                      <Text style={styles.companyTenure}> • {company.totalTenure}</Text>
-                    )}
-                  </Text>
-                </View>
-                
-                {company.roles.map((role: Role, roleIndex: number) => (
-                  <View key={roleIndex} style={styles.roleCard}>
-                    <Text style={styles.roleTitle}>
-                      {role.title}
+            {cvData.experience.map((company: Experience, companyIndex: number) => {
+              const isLastCompany = companyIndex === cvData.experience.length - 1;
+              const companyCardStyle = isLastCompany
+                ? { ...styles.companyCard, marginBottom: 0 }
+                : styles.companyCard;
+              return (
+                <View key={companyIndex} style={companyCardStyle}>
+                  <View style={styles.companyHeader}>
+                    <Text style={styles.companyName}>
+                      {company.company}
                     </Text>
-                    <Text style={styles.roleDuration}>
-                      {role.duration}
+                    <Text style={styles.companyLocation}>
+                      {company.location}
+                      {company.totalTenure && (
+                        <Text style={styles.companyTenure}> • {company.totalTenure}</Text>
+                      )}
                     </Text>
-                    
-                    {role.responsibilities.map((responsibility: string, respIndex: number) => (
-                      <View key={respIndex} style={styles.responsibilityItem}>
-                        <Text style={styles.bullet}>•</Text>
-                        <Text style={styles.responsibilityText}>
-                          {responsibility}
-                        </Text>
-                      </View>
-                    ))}
                   </View>
-                ))}
-              </View>
-            ))}
+                  {company.roles.map((role: Role, roleIndex: number) => {
+                    const isLastRole = roleIndex === company.roles.length - 1;
+                    const roleCardStyle = isLastRole
+                      ? { ...styles.roleCard, marginBottom: 0 }
+                      : styles.roleCard;
+                    return (
+                      <View key={roleIndex} style={roleCardStyle}>
+                        <Text style={styles.roleTitle}>
+                          {role.title}
+                        </Text>
+                        <Text style={styles.roleDuration}>
+                          {role.duration}
+                        </Text>
+                        {role.responsibilities.map((responsibility: string, respIndex: number) => (
+                          <View key={respIndex} style={styles.responsibilityItem}>
+                            <Text style={styles.bullet}>•</Text>
+                            <Text style={styles.responsibilityText}>
+                              {responsibility}
+                            </Text>
+                          </View>
+                        ))}
+                      </View>
+                    );
+                  })}
+                </View>
+              );
+            })}
           </View>
         </View>
       </Page>
