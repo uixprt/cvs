@@ -173,6 +173,7 @@ const CVHeader: React.FC<CVHeaderProps> = ({ selectedProfile, onProfileChange, c
           <Button 
             variant="contained" 
             onClick={handlePrint}
+            aria-label="Print Resume"
             startIcon={<Print sx={{ color: theme.primary }} />}
             sx={{ 
               minWidth: 120,
@@ -199,6 +200,7 @@ const CVHeader: React.FC<CVHeaderProps> = ({ selectedProfile, onProfileChange, c
             <Button 
               variant="contained" 
               onClick={handleDownloadPdf}
+              aria-label="Download PDF Resume"
               disabled={isGenerating}
               startIcon={<Download sx={{ color: theme.primary }} />}
               sx={{ 

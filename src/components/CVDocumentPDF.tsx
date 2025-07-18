@@ -23,43 +23,54 @@ const CVDocumentPDF: React.FC<CVDocumentPDFProps> = ({ cvData }) => {
   // Use the same theme logic as the web components
   const theme = cvData.profile.includes('Frontend') ? THEME_COLORS.frontend : THEME_COLORS.sdet;
   
+  // Determine main color based on profile
+  const isSdet = cvData.profile.toLowerCase().includes('sdet');
+  const mainColor = isSdet ? THEME_COLORS.sdet.primary : '#2196f3';
+  
   // Create styles that match the print layout exactly
   const styles = StyleSheet.create({
     page: {
       fontFamily: 'Rubik',
       backgroundColor: '#ffffff',
-      padding: '25pt 18pt 18pt 18pt', // Matching print margins: 0.35in top, 0.25in sides/bottom
+      padding: '14pt 10pt 10pt 10pt', // עוד הקטנה
       color: '#333333',
-      fontSize: 11,
-      lineHeight: 1.4,
+      fontSize: 9, // עוד הקטנה
+      lineHeight: 1.2, // עוד הקטנה
+      maxHeight: '842pt',
+      minHeight: '842pt',
     },
     
     // Profile Header - matches the gradient card in print
     profileHeader: {
-      backgroundColor: theme.primary,
+      backgroundColor: mainColor,
       borderRadius: 8,
-      padding: 16,
+      padding: 8,
       textAlign: 'center',
-      marginBottom: 8,
+      marginBottom: 4,
       color: '#ffffff',
     },
     
     profileName: {
-      fontSize: 26,
+      fontSize: 18,
       fontWeight: 700,
-      marginBottom: 8,
+      marginBottom: 16,
       color: '#ffffff',
     },
     
     profileHeadline: {
-      fontSize: 14,
+      fontSize: 10,
       fontWeight: 500,
       backgroundColor: 'rgba(255,255,255,0.2)',
-      paddingVertical: 6,
-      paddingHorizontal: 12,
+      paddingVertical: 3,
+      paddingHorizontal: 8,
       borderRadius: 4,
-      marginBottom: 8,
+      marginBottom: 3,
       color: '#ffffff',
+      alignSelf: 'center',
+      display: 'inline-block',
+      textAlign: 'center',
+      minWidth: 0,
+      maxWidth: '80%',
     },
     
     // Contact Info Container
@@ -67,17 +78,26 @@ const CVDocumentPDF: React.FC<CVDocumentPDFProps> = ({ cvData }) => {
       flexDirection: 'row',
       flexWrap: 'wrap',
       justifyContent: 'center',
-      gap: 12,
-      marginTop: 8,
+      gap: 8, // היה 12
+      marginTop: 4, // היה 8
+      marginBottom: 4,
     },
     
     contactItem: {
       fontSize: 11,
       color: '#ffffff',
+      flexDirection: 'row',
+      alignItems: 'center',
+      gap: 2,
+      marginRight: 8,
+    },
+    contactIcon: {
+      fontSize: 11,
+      marginRight: 3,
     },
     
     contactLink: {
-      fontSize: 11,
+      fontSize: 10,
       color: '#ffffff',
       textDecoration: 'underline',
     },
@@ -89,19 +109,22 @@ const CVDocumentPDF: React.FC<CVDocumentPDFProps> = ({ cvData }) => {
     
     // Section Titles
     sectionTitle: {
-      fontSize: 16,
-      fontWeight: 600,
-      color: theme.primary,
-      marginBottom: 8,
-      textTransform: 'uppercase',
+      fontSize: 11,
+      fontWeight: 700,
+      color: mainColor,
+      marginBottom: 6,
+      textTransform: 'none',
+      letterSpacing: 0.2,
+      textDecoration: 'none',
+      alignSelf: 'flex-start',
     },
     
     // Professional Summary
     summaryText: {
-      fontSize: 12,
-      lineHeight: 1.4,
+      fontSize: 9,
+      lineHeight: 1.35, // היה 1.2
       color: '#333333',
-      marginBottom: 12,
+      marginBottom: 8, // היה 6
       textAlign: 'justify',
     },
     
@@ -109,19 +132,19 @@ const CVDocumentPDF: React.FC<CVDocumentPDFProps> = ({ cvData }) => {
     divider: {
       height: 1,
       backgroundColor: '#e0e0e0',
-      marginVertical: 12,
+      marginVertical: 6,
     },
     
     // Skills Section
     skillsContainer: {
-      marginBottom: 12,
+      marginBottom: 6,
     },
     
     skillCategory: {
-      fontSize: 11,
-      lineHeight: 1.3,
+      fontSize: 9,
+      lineHeight: 1.25, // היה 1.1
       color: '#333333',
-      marginBottom: 6,
+      marginBottom: 3, // היה 2
     },
     
     skillCategoryName: {
@@ -131,82 +154,94 @@ const CVDocumentPDF: React.FC<CVDocumentPDFProps> = ({ cvData }) => {
     
     // Experience Section
     experienceContainer: {
-      marginBottom: 12,
+      marginBottom: 6,
     },
     
     companyCard: {
-      backgroundColor: '#f8f9fa',
-      borderRadius: 6,
-      padding: 12,
-      marginBottom: 12,
-      border: `1pt solid ${theme.primary}33`,
+      backgroundColor: '#fff',
+      borderRadius: 4,
+      padding: 6,
+      marginBottom: 6,
     },
     
     companyHeader: {
-      marginBottom: 8,
-    },
-    
-    companyName: {
-      fontSize: 14,
-      fontWeight: 600,
-      color: '#333333',
-      marginBottom: 4,
-    },
-    
-    companyLocation: {
-      fontSize: 10,
-      color: '#666666',
       marginBottom: 2,
     },
     
+    companyName: {
+      fontSize: 11,
+      fontWeight: 700,
+      color: '#222',
+      marginBottom: 1,
+    },
+    
+    companyLocation: {
+      fontSize: 8,
+      color: '#666666',
+      marginBottom: 0,
+    },
+    
     companyTenure: {
-      fontSize: 10,
+      fontSize: 8,
       fontWeight: 600,
       color: theme.primary,
     },
     
     // Role Cards
     roleCard: {
-      backgroundColor: '#ffffff',
-      borderRadius: 4,
-      padding: 10,
-      marginBottom: 8,
-      border: `1pt solid ${theme.primary}33`,
+      backgroundColor: '#fff',
+      borderRadius: 2,
+      padding: 4,
+      marginBottom: 2,
     },
     
     roleTitle: {
-      fontSize: 12,
-      fontWeight: 500,
-      color: '#333333',
-      marginBottom: 4,
+      fontSize: 9,
+      fontWeight: 700,
+      color: '#222',
+      marginBottom: 1,
+      textDecoration: 'none',
     },
     
     roleDuration: {
-      fontSize: 10,
+      fontSize: 8,
       color: '#666666',
-      marginBottom: 6,
+      marginBottom: 2,
     },
     
     // Responsibilities
     responsibilityItem: {
       flexDirection: 'row',
-      marginBottom: 3,
+      marginBottom: 1,
       alignItems: 'flex-start',
     },
     
     bullet: {
-      fontSize: 10,
+      fontSize: 8,
       color: theme.primary,
-      fontWeight: 600,
-      marginRight: 8,
+      fontWeight: 700,
+      marginRight: 4,
       marginTop: 1,
     },
     
     responsibilityText: {
-      fontSize: 10,
-      lineHeight: 1.3,
+      fontSize: 8,
+      lineHeight: 1.25, // היה 1.1
       color: '#333333',
       flex: 1,
+    },
+    contactRow: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginTop: 4,
+      marginBottom: 4,
+      flexWrap: 'wrap',
+    },
+    contactText: {
+      fontSize: 10,
+      color: '#ffffff',
+      textAlign: 'center',
     },
   });
 
@@ -223,24 +258,12 @@ const CVDocumentPDF: React.FC<CVDocumentPDFProps> = ({ cvData }) => {
             {cvData.headline}
           </Text>
           
-          {/* Contact Information */}
-          <View style={styles.contactContainer}>
-            <Text style={styles.contactItem}>
-              {cvData.personalInfo.contact.email}
+          {/* Contact Information - single row, no icons */}
+          <View style={styles.contactRow}>
+            <Text style={styles.contactText}>
+              {cvData.personalInfo.contact.email} | {cvData.personalInfo.contact.phone} | {cvData.personalInfo.location} |
             </Text>
-            <Text style={styles.contactItem}>
-              {cvData.personalInfo.contact.phone}
-            </Text>
-            <Text style={styles.contactItem}>
-              {cvData.personalInfo.location}
-            </Text>
-            {cvData.personalInfo.contact.linkedin && (
-              <Link src={cvData.personalInfo.contact.linkedin} style={styles.contactLink}>
-                <Text style={styles.contactLink}>
-                  LinkedIn Profile
-                </Text>
-              </Link>
-            )}
+            <Link src={cvData.personalInfo.contact.linkedin} style={styles.contactLink}>LinkedIn Profile</Link>
           </View>
         </View>
 

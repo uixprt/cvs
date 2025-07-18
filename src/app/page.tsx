@@ -106,9 +106,6 @@ export default function HomePage() {
   const [selectedProfile, setSelectedProfile] = useState<'frontend' | 'sdet'>('frontend');
   const cvData = profiles[selectedProfile];
 
-  console.log('Current selected profile:', selectedProfile);
-  console.log('Current CV data headline:', cvData.headline);
-
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{ 
