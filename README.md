@@ -1,6 +1,8 @@
-# CV Portfolio - Dynamic Resume Builder
+# Next.js CV Builder – Dynamic Resume Portfolio
 
-A modern, professional CV portfolio application built with Next.js, Material-UI, and @react-pdf/renderer. This application displays multiple CV variants and provides both print and PDF export functionality with ATS-friendly, searchable PDFs.
+A modern, professional CV builder application built with Next.js, Material-UI, and @react-pdf/renderer. This application displays multiple CV variants and provides both print and PDF export functionality with ATS-friendly, searchable PDFs. 
+
+([Live Demo](https://cvs.uixprt.com))
 
 ## 🚀 Features
 
@@ -62,8 +64,8 @@ The application is configured for static export to work with GitHub Pages:
 
 1. Clone the repository:
 ```bash
-git clone <your-repo-url>
-cd cv-portfolio
+git clone git@github.com:uixprt/nextjs-cv-builder.git
+cd nextjs-cv-builder
 ```
 
 2. Install dependencies:
