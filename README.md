@@ -20,7 +20,7 @@ A modern, professional CV builder application built with Next.js, Material-UI, a
 - **Language**: TypeScript
 - **UI Library**: Material-UI (MUI)
 - **PDF Generation**: @react-pdf/renderer
-- **Styling**: Tailwind CSS + MUI
+- **Styling**: MUI
 - **Deployment**: GitHub Pages with GitHub Actions
 
 ## 📁 Project Structure
